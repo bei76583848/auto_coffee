@@ -1,0 +1,167 @@
+{
+	"baseURL": "https://xxx.com:8080/",
+	"admin": "76583848",
+	"table": [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 ],
+	"latte": {
+		"0": {
+			"name": "拉花0",
+			"imgSrc": "img/pull/l0.png"
+		},
+		"1": {
+			"name": "拉花1",
+			"imgSrc": "img/pull/l1.png"
+		},
+		"2": {
+			"name": "拉花2",
+			"imgSrc": "img/pull/l2.png"
+		},
+		"3": {
+			"name": "拉花3",
+			"imgSrc": "img/pull/l3.png"
+		},
+		"4": {
+			"name": "拉花4",
+			"imgSrc": "img/pull/l4.png"
+		},
+		"5": {
+			"name": "拉花5",
+			"imgSrc": "img/pull/l5.png"
+		},
+		"6": {
+			"name": "拉花6",
+			"imgSrc": "img/pull/l6.png"
+		},
+		"7": {
+			"name": "拉花7",
+			"imgSrc": "img/pull/l7.png"
+		}
+	},
+	"coffeeList": {
+		"0": {
+			"name": "美式咖啡",
+			"details": "口味比较淡。因为一般的萃取时间相对较长（大概四五分钟），所以咖啡因含量较高。",
+			"mon": 1.00,
+			"imgSrc": "img/coffee_img/img0.jpg",
+			"isLatte": true
+		},
+		"1": {
+			"name": "爱尔兰咖啡",
+			"details": "咖啡简介",
+			"mon": 1500.00,
+			"imgSrc": "img/coffee_img/img1.jpg",
+			"isLatte": false
+		},
+		"2": {
+			"name": "皇家咖啡",
+			"details": "咖啡简介",
+			"mon": 1500.00,
+			"imgSrc": "img/coffee_img/img2.jpg",
+			"isLatte": true
+		},
+		"3": {
+			"name": "卡布奇诺",
+			"details": "咖啡简介",
+			"mon": 1500.00,
+			"imgSrc": "img/coffee_img/img4.jpg",
+			"isLatte": true
+		},
+		"4": {
+			"name": "拿铁咖啡",
+			"details": "咖啡简介",
+			"mon": 1500.00,
+			"imgSrc": "img/coffee_img/img6.jpg",
+			"isLatte": true
+		},
+		"5": {
+			"name": "美式咖啡",
+			"details": "咖啡简介",
+			"mon": 1500.00,
+			"imgSrc": "img/coffee_img/img7.jpg",
+			"isLatte": true
+		},
+		"6": {
+			"name": "爱尔兰咖啡",
+			"details": "咖啡简介",
+			"mon": 1500.00,
+			"imgSrc": "img/coffee_img/img8.jpg",
+			"isLatte": true
+		},
+		"7": {
+			"name": "皇家咖啡",
+			"details": "咖啡简介",
+			"mon": 1500.00,
+			"imgSrc": "img/coffee_img/img9.jpg",
+			"isLatte": true
+		},
+		"8": {
+			"name": "卡布奇诺",
+			"details": "咖啡简介",
+			"mon": 1500.00,
+			"imgSrc": "img/coffee_img/img10.jpg",
+			"isLatte": true
+		},
+		"9": {
+			"name": "焦糖玛奇朵",
+			"details": "咖啡简介",
+			"mon": 1500.00,
+			"imgSrc": "img/coffee_img/img11.jpg",
+			"isLatte": true
+		},
+		"10": {
+			"name": "拿铁咖啡",
+			"details": "咖啡简介",
+			"mon": 1500.00,
+			"imgSrc": "img/coffee_img/img12.jpg",
+			"isLatte": true
+		},
+		"11": {
+			"name": "美式咖啡",
+			"details": "咖啡简介",
+			"mon": 1500.00,
+			"imgSrc": "img/coffee_img/img13.jpg",
+			"isLatte": true
+		},
+		"12": {
+			"name": "爱尔兰咖啡",
+			"details": "咖啡简介",
+			"mon": 1500.00,
+			"imgSrc": "img/coffee_img/img14.jpg",
+			"isLatte": true
+		},
+		"13": {
+			"name": "皇家咖啡",
+			"details": "咖啡简介",
+			"mon": 1500.00,
+			"imgSrc": "img/coffee_img/img1.jpg",
+			"isLatte": true
+		},
+		"14": {
+			"name": "卡布奇诺",
+			"details": "咖啡简介",
+			"mon": 1500.00,
+			"imgSrc": "img/coffee_img/img7.jpg",
+			"isLatte": true
+		},
+		"15": {
+			"name": "焦糖玛奇朵",
+			"details": "咖啡简介",
+			"mon": 1500.00,
+			"imgSrc": "img/coffee_img/img11.jpg",
+			"isLatte": true
+		},
+		"16": {
+			"name": "拿铁咖啡",
+			"details": "咖啡简介",
+			"mon": 1500.00,
+			"imgSrc": "img/coffee_img/img9.jpg",
+			"isLatte": true
+		},
+		"17": {
+			"name": "焦糖玛奇朵",
+			"details": "咖啡简介",
+			"mon": 1500.00,
+			"imgSrc": "img/coffee_img/img5.jpg",
+			"isLatte": false
+		}
+	}
+}
