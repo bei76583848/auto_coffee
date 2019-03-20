@@ -30,10 +30,10 @@
 	window.addEventListener('orientationchange', resize, false);
 })();
 </script>
-<link rel="stylesheet" type="text/css" href="style/index.css"/>
+<link rel="stylesheet" type="text/css" href="style/index.min.css"/>
 </head>
 <body>
-<div id="app" class="app" v-cloak>
+<div id="app" class="app" :class="{adaptation: adaptation}" v-cloak>
 	<transition-group name="fadeLeft" tag="section">
 		<section class="index" key="fadeLeft">
 			<!-- 首页 -->
@@ -49,9 +49,9 @@
 							<div class="indexListImg">
 								<img class="lce_ani" :src="item.imgSrc"/>
 							</div>
-							<div class="indexListTx">
-								<p class="indexListTx1">{{item.name}}</p>
-								<p class="indexListTx2">￥{{item.mon / 100}}元</p>
+							<div class="indexListTx etce">
+								<p class="indexListTx1 els">{{item.name}}</p>
+								<p class="indexListTx2 els">￥{{item.mon}}元</p>
 							</div>
 						</li>
 						
@@ -61,12 +61,13 @@
 			<!-- 订单 -->
 			<div class="show" v-show="orderShow">
 				<div class="order">
+					<div class="refreshBtn2 btn2" @click="refreshOrder()">点击刷新</div>
 					<ul class="flex">
 						<li
 							class="indexList2 flex"
 							v-for="item, index in orderList"
-							v-if="indexList"
-							v-show="orderCondition == item.userPhone || orderCondition == admin"
+							v-if="indexList[item.coffeeId]"
+							v-show="phoneVal == item.userPhone || phoneVal == admin"
 						>
 							<div class="indexList2Img">
 								<img class="ce_ani" :src="indexList[item.coffeeId].imgSrc"/>
@@ -74,10 +75,10 @@
 							<div class="indexList2Tx">
 								<p class="idxLTx1">
 									{{indexList[item.coffeeId].name}}
-									<span :class="item.state == 1 ? 'spanWin' : item.state == 2 ? 'spanMaking' : 'spanWait'">({{item.state == 1 ? '完成' : item.state == 2 ? '制作中' : '等待中'}})</span>
+									<span v-if="item.productionStatus" :class="item.productionStatus">({{item.productionStatusTx}})</span>
 								</p>
 								<p class="idxLTx2">手机号码：{{item.userPhone}}</p>
-								<p class="idxLTx5">支付金额：￥{{item.priceStr}}</p>
+								<p class="idxLTx5">支付金额：￥{{item.totalFee}}</p>
 								<p class="idxLTx6">桌号信息：{{item.tableNumber}}号桌</p>
 								<div class="idxLTx4 flex">
 									<span>支付信息：{{item.timeStr}}</span>
@@ -87,12 +88,9 @@
 									<span>拉花样式：</span>
 									<img :src="latteList[item.flowId].imgSrc" >
 								</div>
-								<div class="idxLTxBtn btn" @click="idxLTxBtn(index)" v-show="orderCondition == admin">再次制作</div>
+								<div class="idxLTxBtn btn" @click="idxLTxBtn(index)" v-show="phoneVal == admin">再次制作</div>
 							</div>
-							<div
-								class="orderListState"
-								:class="item.state == 1 ? 'win' : item.state == 2 ? 'making' : 'wait'"
-							></div>
+							<div class="orderListState" :class="item.productionStatus"></div>
 						</li>
 					</ul>
 					<img class="refreshOrder btn" src="img/icon/refresh.png" @click="refreshOrder()" />
@@ -108,7 +106,7 @@
 						</div>
 					</div>
 					<div class="footerBtn footerBtn1">
-						<div class="footerBtnBg txce btn exc" :class="orderShow ? 'ele' : ''" @click="popShow('phonePop')">
+						<div class="footerBtnBg txce btn exc" :class="orderShow ? 'ele' : ''" @click="showPhonePop()">
 							<img src="img/icon/nav_order.png" >
 							<div class="txce">订单</div>
 						</div>
@@ -118,44 +116,47 @@
 		</section>
 		<!-- 商品详情 -->
 		<section class="details pg" key="fadeLeft" v-show="page.details">
-			<div class="detailsHead">
-				<img class="ce_ani" :src="'img/details/details_img' + randomNum + '.jpg'" >
-				<div class="tabNum btn2" @click="chioseTabShow()">{{tabNum || tabNum === 0 ? '当前桌号：' + tabNum : '点击选择桌号'}}</div>
-			</div>
-			<!-- 详情 -->
-			<div class="detailsInfr" v-if='detailItem'>
-				<div class="detailsInfrTx1 flex">
-					<div class="detailsInfrTx1Img">
-						<img class="ce_ani" :src="detailItem.imgSrc" >
+			<div class="detailsCont">
+				<div class="detailsHead">
+					<img class="ce_ani" :src="'img/details/details_img' + randomNum + '.jpg'" >
+					<div class="tabNum btn2" @click="chioseTabShow()">{{tabNum || tabNum === 0 ? '当前桌号：' + tabNum : '点击选择桌号'}}</div>
+				</div>
+				<!-- 详情 -->
+				<div class="detailsInfr" v-if='detailItem'>
+					<div class="detailsInfrTx1 flex">
+						<div class="detailsInfrTx1Img">
+							<img class="ce_ani" :src="detailItem.imgSrc" >
+						</div>
+						<div class="detailsInfrTx1p">
+							<p>{{detailItem.name}}</p>
+							<p>{{detailItem.details}}</p>
+							<p>￥{{detailItem.mon}}元</p>
+						</div>
 					</div>
-					<div class="detailsInfrTx1p">
-						<p>{{detailItem.name}}</p>
-						<p>{{detailItem.details}}</p>
-						<p>￥{{detailItem.mon / 100}}元</p>
+					<div class="detailsBorder"></div>
+				</div>
+				<!-- 拉花 -->
+				<div class="detailsInfr" v-if='detailItem'>
+					<p class="detailsInfrTitle">选择拉花</p>
+					<ul class="pullList flex">
+						<li v-for='item, index in latteList' class="exc" :class="index === pullIdx ? 'ele' : ''" @click="setPullIdx(index)">
+							<img :src="item.imgSrc" >
+							<p>拉花</p>
+						</li>
+					</ul>
+					<div class="isLatte" v-show="!detailItem.isLatte"></div>
+					<div class="detailsBorder"></div>
+				</div>
+				<!-- 手机号码 -->
+				<div class="detailsInfr flex">
+					<p class="detailsInfrTitle">手机号码:</p>
+					<div class="phoneInput flex">
+						<input id="phoneInput" type="tel" placeholder="请输入手机号码" v-model="phoneVal"/>
+						<div></div>
 					</div>
 				</div>
-				<div class="detailsBorder"></div>
 			</div>
-			<!-- 拉花 -->
-			<div class="detailsInfr" v-if='detailItem'>
-				<p class="detailsInfrTitle">选择拉花</p>
-				<ul class="pullList flex">
-					<li v-for='item, index in latteList' class="exc" :class="index === pullIdx ? 'ele' : ''" @click="setPullIdx(index)">
-						<img :src="item.imgSrc" >
-						<p>拉花</p>
-					</li>
-				</ul>
-				<div class="isLatte" v-show="!detailItem.isLatte"></div>
-				<div class="detailsBorder"></div>
-			</div>
-			<!-- 手机号码 -->
-			<div class="detailsInfr flex">
-				<p class="detailsInfrTitle">手机号码:</p>
-				<div class="phoneInput flex">
-					<input type="tel" placeholder="请输入手机号码" v-model="phoneVal"/>
-					<div></div>
-				</div>
-			</div>
+			
 			<div class="indexFooter detailsFooter">
 				<div class="footerBtnCont ce txce">
 					<div class="footerBtn footerBtn1">
@@ -163,7 +164,7 @@
 							<div class="txce">返回首页</div>
 						</div>
 					</div>
-					<div class="footerBtn footerBtn1">
+					<div class="footerBtn footerBtn1" :class="{bgColor: tabNum && tabNum !== 0 && phoneVal}">
 						<div class="footerBtnBg txce btn" @click="paymentPgShow()">
 							<div class="txce">支付下单</div>
 						</div>
@@ -172,17 +173,22 @@
 			</div>
 		</section>
 		<!-- 付款 -->
-		<section class="paymentPg pg" key="fadeLeft" v-show="page.paymentPg">
-			<div class="ce ece">
-				<p>{{qrcodeImg ? '扫码支付' : '选择支付方式'}}</p>
-				<div class="qrcode show" v-show='qrcodeImg'>
-					<img class="ce" :src="qrcodeImg" v-show='qrcodeImg'>
+		<section class="paymentPg pg exc" :class="qrcodeSrc" key="fadeLeft" v-show="page.paymentPg">
+			<div class="ce">
+				<div class="paymentPgCont ece">
+					<p>{{qrcodeSrc ? '扫码支付' : '选择支付方式'}}</p>
+					<div class="qrcode show exc" :class="qrcodeSrc" v-show='qrcodeSrc'>
+						<img v-if='qrcodeSrc' :src="'./img/pay/' + qrcodeSrc + '.png'">
+					</div>
+					<div class="chiosePay ece" v-show='!qrcodeSrc'>
+						<img class="btn" src="img/icon/alipay.png" @click="chiosePay('ali_scan_pay')"/>
+						<img class="btn" src="img/icon/wechat.png" @click="chiosePay('wx_scan_pay')"/>
+					</div>
+					<div class="paySucc btn flex-ce exc" :class="qrcodeSrc" @click="paySucc()" v-show='qrcodeSrc'>付款成功</div>
+					<p class="paymentPgTx1" v-if="paymentPgTx1">下单失败，请联系工作人员</p>
 				</div>
-				<div class="chiosePay ece" v-show='!qrcodeImg'>
-					<img class="btn" src="img/icon/alipay.png" @click="chiosePay('ali_scan_pay')"/>
-					<img class="btn" src="img/icon/wechat.png" @click="chiosePay('wx_scan_pay')"/>
-				</div>
-				<div class="payToIndex btn flex-ce" @click="paytoIndex()">返回首页</div>
+				
+				<div class="payToIndex btn flex-ce" @click="toIndex()">返回首页</div>
 			</div>
 		</section>
 		<!-- 桌号选择 -->
@@ -202,7 +208,7 @@
 		<section class="pop" key="fade" v-show="popupBg" @click="close"></section>
 		<!-- 输入手机号码 -->
 		<section class="phonePop lce" key="fade" v-show="pop.phonePop">
-			<input type="tel" placeholder="请输入手机号码查询订单详情" v-model="phoneVal"/>
+			<input id="phonePopInput" type="tel" placeholder="请输入手机号码查询订单详情" v-model="phoneVal"/>
 			<div class="flex-ce btn" @click="toOrder">确定</div>
 		</section>
 		<!-- 确认制作 -->
@@ -214,11 +220,11 @@
 			</div>
 		</section>
 		<section class="payinfo pop" key="fade" v-show='pop.payinfo'>
-			<div class="showPop ce">
+			<div class="showPop ce" :class="qrcodeSrc">
 				<p>{{payStatus ? '付款成功，咖啡马上送到' : '付款失败'}}</p>
 				<div class="showPopBtn flex-ce">
-					<div class="btn" @click="paytoIndex()">返回首页</div>
-					<div class="btn" @click="seeOrder()" v-show='payStatus'>查看订单</div>
+					<div class="btn" @click="toIndex()">返回首页</div>
+					<div class="btn" @click="toOrder()" v-show='payStatus'>查看订单</div>
 				</div>
 			</div>
 		</section>

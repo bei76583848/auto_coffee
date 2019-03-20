@@ -3304,10 +3304,6 @@ textarea {
 .btn2:active {
   opacity: 0.8;
 }
-:not(input,textarea) {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-}
 .close {
   padding: 20px;
   position: absolute;
@@ -3860,7 +3856,6 @@ span.l-7 {
 .indexHead {
   height: 250px;
   position: relative;
-  overflow: hidden;
   background-color: #000203;
 }
 .indexHeadImg::before {
@@ -3879,6 +3874,7 @@ span.l-7 {
   position: absolute;
   left: 0;
   bottom: 0;
+  z-index: 1;
   border-radius: 0 5px 0 0;
   color: #ffffff;
   text-decoration: underline;
@@ -3894,28 +3890,27 @@ span.l-7 {
 }
 .indexCont {
   box-sizing: border-box;
-  padding: 16px 16px 86px 16px;
+  padding: 16px 0 86px 0;
   position: relative;
   background: #fff;
 }
 .indexCont > ul {
   flex-wrap: wrap;
+  box-sizing: border-box;
+  padding-left: 18px;
 }
 .indexList {
   width: 188px;
   height: 246px;
-  margin: 6px 20px 6px 0;
+  margin: 6px 18px 6px 0;
   background-color: #3b7955;
   border: 1px solid #3b7955;
   border-radius: 5px;
   overflow: hidden;
   position: relative;
 }
-.indexList:nth-of-type(3n) {
-  margin: 6px 0;
-}
 .indexListImg {
-  height: 160px;
+  height: 65%;
   position: relative;
   overflow: hidden;
 }
@@ -3923,18 +3918,21 @@ span.l-7 {
   max-height: 100%;
 }
 .indexListTx {
-  width: 100px;
+  height: 35%;
+  box-sizing: border-box;
   overflow: hidden;
   margin-left: 10px;
-  margin-top: 27px;
+  padding-top: 13px;
   position: relative;
 }
 .indexListTx1 {
+  width: 90%;
   font-size: 18px;
   position: relative;
   color: #ffffff;
 }
 .indexListTx2 {
+  width: 90%;
   font-size: 16px;
   color: #ffffff;
   margin-top: 3px;
@@ -3962,6 +3960,12 @@ span.l-7 {
   display: block;
   margin: 0 auto;
   padding: 20px;
+}
+.refreshBtn2 {
+  color: #ffffff;
+  text-align: right;
+  text-decoration: underline;
+  padding-bottom: 10px;
 }
 .order > ul {
   flex-wrap: wrap;
@@ -3991,14 +3995,20 @@ span.l-7 {
   flex: 1;
   position: relative;
 }
-.idxLTx1 span.spanWin {
-  color: #91c482;
+.idxLTx1 span.CREATE {
+  color: #f89544;
 }
-.idxLTx1 span.spanMaking {
+.idxLTx1 span.COFFEEING {
   color: #3380c8;
 }
-.idxLTx1 span.spanWait {
-  color: #f89544;
+.idxLTx1 span.FLOWING {
+  color: #3380c8;
+}
+.idxLTx1 span.DELIVERYING {
+  color: #3380c8;
+}
+.idxLTx1 span.COMPLETE {
+  color: #91c482;
 }
 .idxLTx1 {
   color: #333333;
@@ -4053,15 +4063,6 @@ span.l-7 {
   right: -1px;
   border-left: 70px solid transparent;
 }
-.orderListState.win {
-  border-top: 70px solid #91c482;
-}
-.orderListState.making {
-  border-top: 70px solid #3380c8;
-}
-.orderListState.wait {
-  border-top: 70px solid #f89544;
-}
 .orderListState::after {
   content: '';
   width: 30px;
@@ -4071,25 +4072,55 @@ span.l-7 {
   left: -34px;
   background-size: 100% 100%;
 }
-.orderListState.win::after {
-  background-image: url('../img/icon/win.png');
+.orderListState.CREATE {
+  border-top: 70px solid #f89544;
 }
-.orderListState.making::after {
-  background-image: url('../img/icon/making.png');
+.orderListState.CREATE::after {
+  background-image: url('../img/icon/CREATE.png');
 }
-.orderListState.wait::after {
-  background-image: url('../img/icon/wait.png');
+.orderListState.COFFEEING {
+  border-top: 70px solid #3380c8;
+}
+.orderListState.COFFEEING::after {
+  background-image: url('../img/icon/COFFEEING.png');
+}
+.orderListState.FLOWING {
+  border-top: 70px solid #3380c8;
+}
+.orderListState.FLOWING::after {
+  background-image: url('../img/icon/FLOWING.png');
+}
+.orderListState.DELIVERYING {
+  border-top: 70px solid #3380c8;
+}
+.orderListState.DELIVERYING::after {
+  background-image: url('../img/icon/DELIVERYING.png');
+}
+.orderListState.COMPLETE {
+  border-top: 70px solid #91c482;
+}
+.orderListState.COMPLETE::after {
+  background-image: url('../img/icon/COMPLETE.png');
 }
 .paymentPg {
+  background-color: #4a494f;
+}
+.paymentPg.ali_scan_pay {
+  background-color: #1b79aa;
+}
+.paymentPg.wx_scan_pay {
   background-color: #3b7955;
 }
 .paymentPg > div {
   width: 400px;
-  height: 510px;
+  height: 577px;
+}
+.paymentPgCont {
+  min-height: 510px;
   background-color: #ffffff;
   border-radius: 10px;
 }
-.paymentPg > div > p {
+.paymentPgCont > p {
   width: 100%;
   font-size: 32px;
   font-weight: bold;
@@ -4097,27 +4128,57 @@ span.l-7 {
   text-align: center;
   margin-bottom: 30px;
 }
+.paymentPgCont > p.paymentPgTx1 {
+  color: #f84444;
+  font-size: 15px;
+  margin-bottom: 10px;
+}
 .qrcode {
   width: 260px;
   height: 260px;
   position: relative;
-  border: 4px solid #3b7955;
+  border: 4px solid #4a494f;
   border-radius: 5px;
+}
+.qrcode.ali_scan_pay {
+  border-color: #1b79aa;
+}
+.qrcode.wx_scan_pay {
+  border-color: #3b7955;
 }
 .qrcode > img {
   width: 90%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
 }
-.payToIndex {
+.paySucc {
   width: 180px;
   height: 45px;
   color: #ffffff;
-  background-color: #3b7955;
+  background-color: #4a494f;
   border-radius: 5px;
-  margin-top: 30px;
+  margin: 30px 50px 0 50px;
+}
+.paySucc.ali_scan_pay {
+  background-color: #1b79aa;
+}
+.paySucc.wx_scan_pay {
+  background-color: #3b7955;
+}
+.payToIndex {
+  width: 200px;
+  color: #ffffff;
+  font-size: 21px;
+  margin: 0 auto;
+  padding: 20px;
+  text-decoration: underline;
 }
 .chiosePay {
   width: 100%;
-  height: 260px;
 }
 .chiosePay img {
   width: 100px;
@@ -4146,6 +4207,15 @@ span.l-7 {
 .footerBtnBg.ele {
   background-color: #272729;
   border-radius: 5px;
+}
+.details {
+  overflow-y: scroll;
+}
+.details .bgColor {
+  background-color: #3b7955;
+}
+.detailsCont {
+  margin-bottom: 80px;
 }
 .detailsFooter::after {
   content: '';
@@ -4267,6 +4337,7 @@ span.l-7 {
 .chioseTab {
   box-sizing: border-box;
   padding: 16px;
+  overflow-y: scroll;
 }
 .chioseTabUl {
   margin-top: 20px;
@@ -4329,9 +4400,15 @@ span.l-7 {
 .showPop {
   width: 60vw;
   height: 220px;
-  background-color: #3b7955;
+  background-color: #4a494f;
   border-radius: 5px;
   position: fixed;
+}
+.showPop.ali_scan_pay {
+  background-color: #1b79aa;
+}
+.showPop.wx_scan_pay {
+  background-color: #3b7955;
 }
 .showPop > p {
   width: 90%;
@@ -4348,4 +4425,30 @@ span.l-7 {
 }
 .payinfo .showPopBtn > div {
   margin: 0 18px;
+}
+.app.adaptation .indexHead {
+  height: 0;
+}
+.app.adaptation .detailsHead {
+  height: 160px;
+}
+.app.adaptation .index .tabNum {
+  position: fixed;
+  bottom: inherit;
+  top: 0;
+  border-radius: 0 0 5px 0;
+}
+.app.adaptation .paymentPgCont {
+  min-height: 430px;
+}
+.app.adaptation .indexList {
+  width: 137px;
+  height: 176px;
+}
+.app.adaptation .indexListTx {
+  padding-top: 0;
+}
+.app.adaptation .paymentPg > div {
+  transform: scale(0.7);
+  -webkit-transform: scale(0.7);
 }
