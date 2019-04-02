@@ -1,6 +1,6 @@
-@import "common.less";
 @import "animate.less";
 @import "animation.less";
+@import "common.less";
 
 @color: #3b7955;
 @color2: #4a494f;
@@ -438,18 +438,19 @@
 }
 .pullList li {
 	width: 100px;
-	height: 104px;
+	height: 100px;
 	margin: 10px;
 	background-color: @color2;
-	border: 1px solid @color2;
+	border: 2px solid @color2;
 	border-radius: 3px;
-	overflow: height;
+	overflow: hidden;
 	box-sizing: border-box;
 	position: relative;
+
 }
 .pullList li.ele {
 	background-color: @color;
-	border: 1px solid @color;
+	border: 5px solid @color;
 }
 .pullList li.ele::after {
 	content: '';

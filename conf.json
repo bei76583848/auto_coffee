@@ -4,189 +4,103 @@
 	"table": [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 ],
 	"latte": {
 		"1": {
-			"name": "拉花0",
+			"name": "玫瑰",
 			"imgSrc": "img/pull/l0.png",
 			"id": "1"
 		},
 		"2": {
-			"name": "拉花1",
+			"name": "爱心",
 			"imgSrc": "img/pull/l1.png",
 			"id": "2"
 		},
 		"3": {
-			"name": "拉花2",
+			"name": "Kiss",
 			"imgSrc": "img/pull/l2.png",
 			"id": "3"
 		},
 		"4": {
-			"name": "拉花3",
+			"name": "Logo",
 			"imgSrc": "img/pull/l3.png",
 			"id": "4"
 		},
 		"5": {
-			"name": "拉花4",
+			"name": "米奇",
 			"imgSrc": "img/pull/l4.png",
 			"id": "5"
 		},
 		"6": {
-			"name": "拉花5",
+			"name": "情侣",
 			"imgSrc": "img/pull/l5.png",
 			"id": "6"
 		},
 		"7": {
-			"name": "拉花6",
+			"name": "美味",
 			"imgSrc": "img/pull/l6.png",
 			"id": "7"
 		},
 		"8": {
-			"name": "拉花7",
+			"name": "猫咪",
 			"imgSrc": "img/pull/l7.png",
 			"id": "8"
+		},
+		"9": {
+			"name": "Love",
+			"imgSrc": "img/pull/l8.png",
+			"id": "9"
+		},
+		"10": {
+			"name": "福",
+			"imgSrc": "img/pull/l9.png",
+			"id": "10"
 		}
 	},
 	"coffeeList": {
 		"1": {
-			"name": "美式咖啡",
-			"details": "口味比较淡。因为一般的萃取时间相对较长（大概四五分钟），所以咖啡因含量较高。",
-			"mon": 0.01,
-			"imgSrc": "img/coffee_img/img0.jpg",
+			"name": "卡布奇诺",
+			"details": "特浓咖啡和蒸汽泡沫牛奶相混合的意大利风味咖啡。",
+			"mon": 27.00,
+			"imgSrc": "img/coffee_img/img0.png",
 			"id": "1",
 			"isLatte": true
 		},
 		"2": {
-			"name": "爱尔兰咖啡",
-			"details": "咖啡简介",
-			"mon": 0.5,
-			"imgSrc": "img/coffee_img/img1.jpg",
+			"name": "拿铁玛琪雅朵",
+			"details": "是拿咖啡加入热牛奶，形成上浓下淡的颜色，颇为好看。",
+			"mon": 27.00,
+			"imgSrc": "img/coffee_img/img1.png",
 			"id": "2",
-			"isLatte": false
+			"isLatte": true
 		},
 		"3": {
-			"name": "皇家咖啡",
-			"details": "咖啡简介",
-			"mon": 3,
-			"imgSrc": "img/coffee_img/img2.jpg",
+			"name": "瑞斯崔朵",
+			"details": "芮斯崔朵Ristretto咖啡——一种非常“短”又浓的浓缩咖啡。",
+			"mon": 27.00,
+			"imgSrc": "img/coffee_img/img2.png",
 			"id": "3",
 			"isLatte": true
 		},
 		"4": {
-			"name": "卡布奇诺",
-			"details": "咖啡简介",
-			"mon": 15,
-			"imgSrc": "img/coffee_img/img4.jpg",
+			"name": "牛奶咖啡",
+			"details": "咖啡与牛奶的完美组合。",
+			"mon": 27.00,
+			"imgSrc": "img/coffee_img/img3.png",
 			"id": "4",
 			"isLatte": true
 		},
 		"5": {
-			"name": "拿铁咖啡",
-			"details": "咖啡简介",
-			"mon": 15,
-			"imgSrc": "img/coffee_img/img6.jpg",
+			"name": "美式经典",
+			"details": "咖啡的一种，是最常见的咖啡，受众最广。",
+			"mon": 27.00,
+			"imgSrc": "img/coffee_img/img4.png",
 			"id": "5",
-			"isLatte": true
+			"isLatte": false
 		},
 		"6": {
-			"name": "美式咖啡",
-			"details": "咖啡简介",
-			"mon": 15,
-			"imgSrc": "img/coffee_img/img7.jpg",
+			"name": "意式浓缩",
+			"details": "是一种口感强烈的咖啡类型，借由短时间而高压冲煮过程，形成一种咖啡特有的风味。",
+			"mon": 27.00,
+			"imgSrc": "img/coffee_img/img5.png",
 			"id": "6",
-			"isLatte": true
-		},
-		"7": {
-			"name": "爱尔兰咖啡",
-			"details": "咖啡简介",
-			"mon": 15,
-			"imgSrc": "img/coffee_img/img8.jpg",
-			"id": "7",
-			"isLatte": true
-		},
-		"8": {
-			"name": "皇家咖啡",
-			"details": "咖啡简介",
-			"mon": 15,
-			"imgSrc": "img/coffee_img/img9.jpg",
-			"id": "8",
-			"isLatte": true
-		},
-		"9": {
-			"name": "卡布奇诺",
-			"details": "咖啡简介",
-			"mon": 15,
-			"imgSrc": "img/coffee_img/img10.jpg",
-			"id": "9",
-			"isLatte": true
-		},
-		"10": {
-			"name": "焦糖玛奇朵",
-			"details": "咖啡简介",
-			"mon": 15,
-			"imgSrc": "img/coffee_img/img11.jpg",
-			"id": "10",
-			"isLatte": true
-		},
-		"11": {
-			"name": "拿铁咖啡",
-			"details": "咖啡简介",
-			"mon": 15,
-			"imgSrc": "img/coffee_img/img12.jpg",
-			"id": "11",
-			"isLatte": true
-		},
-		"12": {
-			"name": "美式咖啡",
-			"details": "咖啡简介",
-			"mon": 15,
-			"imgSrc": "img/coffee_img/img13.jpg",
-			"id": "12",
-			"isLatte": true
-		},
-		"13": {
-			"name": "爱尔兰咖啡",
-			"details": "咖啡简介",
-			"mon": 15,
-			"imgSrc": "img/coffee_img/img14.jpg",
-			"id": "13",
-			"isLatte": true
-		},
-		"14": {
-			"name": "皇家咖啡",
-			"details": "咖啡简介",
-			"mon": 15,
-			"imgSrc": "img/coffee_img/img1.jpg",
-			"id": "14",
-			"isLatte": true
-		},
-		"15": {
-			"name": "卡布奇诺",
-			"details": "咖啡简介",
-			"mon": 15,
-			"imgSrc": "img/coffee_img/img7.jpg",
-			"id": "15",
-			"isLatte": true
-		},
-		"16": {
-			"name": "焦糖玛奇朵",
-			"details": "咖啡简介",
-			"mon": 15,
-			"imgSrc": "img/coffee_img/img11.jpg",
-			"id": "16",
-			"isLatte": true
-		},
-		"17": {
-			"name": "拿铁咖啡21",
-			"details": "咖啡简介",
-			"mon": 21,
-			"imgSrc": "img/coffee_img/img9.jpg",
-			"id": "17",
-			"isLatte": true
-		},
-		"18": {
-			"name": "焦糖玛奇朵",
-			"details": "咖啡简介",
-			"mon": 18,
-			"imgSrc": "img/coffee_img/img5.jpg",
-			"id": "18",
 			"isLatte": false
 		}
 	}

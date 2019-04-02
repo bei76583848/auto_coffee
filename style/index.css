@@ -4293,18 +4293,18 @@ span.l-7 {
 }
 .pullList li {
   width: 100px;
-  height: 104px;
+  height: 100px;
   margin: 10px;
   background-color: #4a494f;
-  border: 1px solid #4a494f;
+  border: 5px solid #4a494f;
   border-radius: 3px;
-  overflow: height;
+  overflow: hidden;
   box-sizing: border-box;
   position: relative;
 }
 .pullList li.ele {
   background-color: #3b7955;
-  border: 1px solid #3b7955;
+  border: 5px solid #3b7955;
 }
 .pullList li.ele::after {
   content: '';

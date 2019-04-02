@@ -256,7 +256,7 @@ var app = new Vue({
 			this.preDt = {
 				type: 0,
 				coffeeId: Number(app.detailItem.id),//咖啡种类ID
-				flowId: app.latteList[app.pullIdx] ? app.latteList[app.pullIdx].id : '',//拉花种类ID，不拉花0
+				flowId: app.latteList[app.pullIdx] ? app.latteList[app.pullIdx].id : '99',//拉花种类ID，不拉花99
 				tableNumber: app.tabNum,//桌号ID
 				userPhone: app.phoneVal,
 				createTime: new Date().getTime().toString(),
@@ -272,7 +272,7 @@ var app = new Vue({
 			//订单下发
 			axios.post('/api/v1/orders', this.preDt)
 				.then(function (res) {
-					if(res.status == 201) {
+					if(res.status === 201) {
 						app.addcoffee({
 							type: app.preDt.type,
 							coffeeId: app.preDt.coffeeId,
@@ -301,7 +301,7 @@ var app = new Vue({
 			axios.post('/api/v1/coffeeProductions', data)
 				.then(function (res) {
 					app.ajaxLoading = false;
-					res.status == 201 && cb && cb();
+					res.status === 201 && cb && cb();
 				})
 				.catch(function () {
 					app.ajaxLoading = false;
@@ -314,6 +314,7 @@ var app = new Vue({
 		},
 		
 		getIndex: function() {
+			axios.defaults.baseURL = '//' + window.location.hostname + ':8080';
 			axios({
 				method: 'get',
 				baseURL: './',
@@ -323,7 +324,7 @@ var app = new Vue({
 				app.tabList = res.data.table;
 				app.latteList = res.data.latte;
 				app.admin = res.data.admin;
-				axios.defaults.baseURL = res.data.baseURL;
+				
 			});
 			this.setAdaptation();
 			document.getElementById('phoneInput').onfocus = function(e) {
